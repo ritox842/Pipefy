@@ -1,0 +1,30 @@
+# Node modules
+/node_modules/
+
+# Build output
+/dist/
+/out-tsc/
+
+# Angular CLI configuration
+.angular/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Compiled JavaScript files
+*.js
+*.js.map
+
+# Test coverage reports
+/coverage/
+
+# TypeScript build artifacts
+tsconfig.tsbuildinfo
+
+# Environment specific files (if applicable)
+src/environments/*.local.ts
