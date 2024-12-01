@@ -1,6 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PfyRoundPipe } from './pfy-round.pipe';
-import {PfyRomanPipe} from './pfy-roman.pipe';
+import {PfyRoundPipe} from './pfy-round.pipe';
 
 describe('PfyRoundPipe', () => {
   let pipe: PfyRoundPipe;
