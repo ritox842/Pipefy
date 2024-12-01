@@ -9,6 +9,12 @@ export class PfyAgePipe implements PipeTransform {
     if (!value) return 0;
 
     const birthDate = new Date(value);
+
+    if (!birthDate.getDate()) {
+      console.warn('pfyAge got an invalid date param', value)
+      return 0;
+    }
+
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();

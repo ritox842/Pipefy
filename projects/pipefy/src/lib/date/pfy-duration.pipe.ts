@@ -6,7 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PfyDurationPipe implements PipeTransform {
   transform(value: number): string {
-    if (!value) return '0s';
+    if (!value || value < 0) {
+      console.warn('pfyDuration got an invalid param', value)
+      return '0s';
+    }
 
     const hours = Math.floor(value / 3600);
     const minutes = Math.floor((value % 3600) / 60);

@@ -1,14 +1,18 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {PfyChunkPipe} from "../array/pfy-chunk.pipe";
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'pfyFormat',
   standalone: true
 })
 export class PfyDateFormatPipe implements PipeTransform {
-  transform(value: Date | string, format: string = 'yyyy-MM-dd'): string {
-    if (!value) return '';
+  defaultFormat = 'yyyy-MM-dd';
+  transform(value: Date | string, format = this.defaultFormat): string {
     const date = new Date(value);
+
+    if (!value || !date.getDate()) {
+      console.warn('pfyFormat got an invalid date param', value)
+      return '';
+    }
 
     const replacements = {
       yyyy: date.getFullYear(),
@@ -22,6 +26,14 @@ export class PfyDateFormatPipe implements PipeTransform {
     const replacementsKeys = Object.keys(replacements) as Array<keyof typeof replacements>;
     const replacementsRegex = new RegExp(replacementsKeys.join('|'), 'g');
 
-    return format.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
+    const formattedDate = format.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
+
+    debugger;
+    if (formattedDate === 'invalid format'){
+      console.warn('pfyFormat got an invalid format param', format)
+      return this.defaultFormat.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
+    }
+
+    return formattedDate
   }
 }

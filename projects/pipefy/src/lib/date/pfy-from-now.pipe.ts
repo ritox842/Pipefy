@@ -6,7 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PfyFromNowPipe implements PipeTransform {
   transform(value: Date | string): string {
-    if (!value) return '';
+    if (!value) {
+      console.warn('pfyFromNow got an invalid date param', value)
+      return '';
+    }
 
     const date = new Date(value);
     const now = new Date();

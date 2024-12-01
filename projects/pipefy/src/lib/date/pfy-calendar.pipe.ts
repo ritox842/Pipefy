@@ -7,6 +7,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PfyCalendarPipe implements PipeTransform {
   transform(value: Date | string): string {
     const date = new Date(value);
+
+    if (!date.getDate()){
+      console.warn('pfyCalendar got an invalid date param', value)
+      return '';
+    }
+
     const now = new Date();
     const diff = now.getTime() - date.getTime();
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));

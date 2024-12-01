@@ -6,7 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PfyShufflePipe implements PipeTransform {
   transform<T>(array: T[]): T[] {
-    if (!Array.isArray(array)) return [];
+    if (!Array.isArray(array)) {
+      console.warn('pfyShuffle got an invalid array param', array)
+      return [];
+    }
     const result = [...array];
     for (let i = result.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
