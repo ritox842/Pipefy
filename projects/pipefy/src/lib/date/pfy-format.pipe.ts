@@ -28,7 +28,6 @@ export class PfyDateFormatPipe implements PipeTransform {
 
     const formattedDate = format.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
 
-    debugger;
     if (formattedDate === 'invalid format'){
       console.warn('pfyFormat got an invalid format param', format)
       return this.defaultFormat.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());

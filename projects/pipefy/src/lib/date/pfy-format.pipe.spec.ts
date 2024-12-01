@@ -1,6 +1,6 @@
 import {PfyDateFormatPipe} from './pfy-format.pipe';
 
-fdescribe('PfyDateFormatPipe', () => {
+describe('PfyDateFormatPipe', () => {
   let pipe: PfyDateFormatPipe;
 
   beforeEach(() => {

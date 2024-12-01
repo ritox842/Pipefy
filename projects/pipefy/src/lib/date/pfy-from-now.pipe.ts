@@ -12,6 +12,13 @@ export class PfyFromNowPipe implements PipeTransform {
     }
 
     const date = new Date(value);
+
+    if (!date.getDate()){
+      console.warn('pfyCalendar got an invalid date param', value)
+      return '';
+    }
+
+
     const now = new Date();
     const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
 

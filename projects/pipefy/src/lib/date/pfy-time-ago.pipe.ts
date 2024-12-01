@@ -12,6 +12,13 @@ export class PfyTimeAgoPipe implements PipeTransform {
     }
 
     const date = new Date(value);
+
+    if (!date.getDate()){
+      console.warn('pfyCalendar got an invalid date param', value)
+      return '';
+    }
+
+
     const now = new Date();
     const seconds = Math.round((now.getTime() - date.getTime()) / 1000);
     const minutes = Math.round(seconds / 60);
