@@ -1,5 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {PfyChunkPipe} from "../array/pfy-chunk.pipe";
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'pfyIsPhone',
@@ -8,7 +7,7 @@ import {PfyChunkPipe} from "../array/pfy-chunk.pipe";
 export class PfyIsPhonePipe implements PipeTransform {
   transform(value: string): boolean {
     if (!value) return false;
-    const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    const phoneRegex = /^\+?[1-9]\d{0,2}[-.\s]?(\(?\d{1,4}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
     return phoneRegex.test(value);
   }
 }
