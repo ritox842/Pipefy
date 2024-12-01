@@ -1,6 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PfyValuesPipe } from './pfy-values.pipe';
-import {PfyPickPipe} from './pfy-pick.pipe';
+import {PfyValuesPipe} from './pfy-values.pipe';
 
 describe('PfyValuesPipe', () => {
   let pipe: PfyValuesPipe;
