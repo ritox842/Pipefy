@@ -1,5 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {PfyChunkPipe} from "../array/pfy-chunk.pipe";
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'pfyDecode',
