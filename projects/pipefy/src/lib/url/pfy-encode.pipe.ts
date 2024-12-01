@@ -8,6 +8,12 @@ import {PfyChunkPipe} from "../array/pfy-chunk.pipe";
 export class PfyUrlEncodePipe implements PipeTransform {
   transform(value: string): string {
     if (!value) return '';
-    return encodeURIComponent(value);
+    try {
+      return encodeURIComponent(value);
+    } catch (e){
+      console.warn('pfyEncode got an invalid URL param', value)
+      return '';
+    }
+
   }
 }
