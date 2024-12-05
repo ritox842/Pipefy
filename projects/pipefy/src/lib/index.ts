@@ -39,7 +39,7 @@ export * from './number/pfy-roman.pipe';
 export * from './date/pfy-time-ago.pipe';
 export * from './date/pfy-duration.pipe';
 export * from './date/pfy-calendar.pipe';
-export * from './date/pfy-format.pipe';
+export * from './date/pfy-date-format.pipe';
 export * from './date/pfy-from-now.pipe';
 export * from './date/pfy-age.pipe';
 

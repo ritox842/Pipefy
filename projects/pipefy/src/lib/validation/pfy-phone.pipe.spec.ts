@@ -1,10 +1,13 @@
 import {PfyIsPhonePipe} from './pfy-phone.pipe';
+import {TestBed} from '@angular/core/testing';
 
 describe('PfyIsPhonePipe', () => {
   let pipe: PfyIsPhonePipe;
 
   beforeEach(() => {
-    pipe = new PfyIsPhonePipe();
+    TestBed.runInInjectionContext(() => {
+      pipe = new PfyIsPhonePipe();
+    });
   });
 
   it('should return false for null or undefined input', () => {

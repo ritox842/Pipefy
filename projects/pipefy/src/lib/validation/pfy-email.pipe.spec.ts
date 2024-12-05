@@ -1,10 +1,13 @@
 import {PfyIsEmailPipe} from './pfy-email.pipe';
+import {TestBed} from '@angular/core/testing';
 
 describe('PfyIsEmailPipe', () => {
   let pipe: PfyIsEmailPipe;
 
   beforeEach(() => {
-    pipe = new PfyIsEmailPipe();
+    TestBed.runInInjectionContext(() => {
+      pipe = new PfyIsEmailPipe();
+    });
   });
 
   it('should return false for null or undefined input', () => {

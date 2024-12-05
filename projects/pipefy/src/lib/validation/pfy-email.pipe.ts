@@ -1,13 +1,18 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {inject, InjectionToken, Pipe, PipeTransform} from '@angular/core';
+
+export const PFY_IS_EMAIL = new InjectionToken<RegExp>(
+  'Set the default RegExp for validating email address. The default is /^[a-zA-Z0-9._%+-]+(?:\\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/',
+);
 
 @Pipe({
   name: 'pfyIsEmail',
   standalone: true
 })
 export class PfyIsEmailPipe implements PipeTransform {
-  transform(value: string): boolean {
+  defaultEmailRegex = inject(PFY_IS_EMAIL, {optional: true})
+
+  transform(value: string, emailRegex = this.defaultEmailRegex ?? /^[a-zA-Z0-9._%+-]+(?:\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/): boolean {
     if (!value) return false;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+(?:\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(value);
   }
 }

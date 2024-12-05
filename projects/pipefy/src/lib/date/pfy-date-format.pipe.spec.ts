@@ -1,10 +1,13 @@
-import {PfyDateFormatPipe} from './pfy-format.pipe';
+import {PfyDateFormatPipe} from './pfy-date-format.pipe';
+import {TestBed} from '@angular/core/testing';
 
 describe('PfyDateFormatPipe', () => {
   let pipe: PfyDateFormatPipe;
 
   beforeEach(() => {
-    pipe = new PfyDateFormatPipe();
+    TestBed.runInInjectionContext(() => {
+      pipe = new PfyDateFormatPipe();
+    });
   });
 
   it('should handle invalid input', () => {

@@ -1,12 +1,16 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {inject, InjectionToken, Pipe, PipeTransform} from '@angular/core';
+
+export const PFY_DATE_FORMAT = new InjectionToken<string>(
+  'Set the default Date format. Default is yyyy-MM-dd.',
+);
 
 @Pipe({
-  name: 'pfyFormat',
+  name: 'pfyDateFormat',
   standalone: true
 })
 export class PfyDateFormatPipe implements PipeTransform {
-  defaultFormat = 'yyyy-MM-dd';
-  transform(value: Date | string, format = this.defaultFormat): string {
+  defaultDateFormat = inject(PFY_DATE_FORMAT, {optional: true}) ?? 'yyyy-MM-dd';
+  transform(value: Date | string, format = this.defaultDateFormat): string {
     const date = new Date(value);
 
     if (!value || !date.getDate()) {
@@ -30,7 +34,7 @@ export class PfyDateFormatPipe implements PipeTransform {
 
     if (formattedDate === 'invalid format'){
       console.warn('pfyFormat got an invalid format param', format)
-      return this.defaultFormat.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
+      return this.defaultDateFormat.replace(replacementsRegex, (match) => replacements[match as keyof typeof replacements].toString());
     }
 
     return formattedDate
